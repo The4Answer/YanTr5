@@ -25,7 +25,6 @@ int main() {
     //read
     int n;
     cin >> n;
-
     map<pair<int, int>, int> table;
     for (int i = 0; i < n; ++i) {
         pair<int,int> tmp;
@@ -34,7 +33,7 @@ int main() {
     }
 
     //solve
-    int Max = 5;
+    int Max = 3;
     vector<pair<int, int>> ans;
     for (auto i = table.begin(); i != table.end(); ++i) {
         for (auto j = table.begin(); j != table.end(); ++j) {
@@ -94,6 +93,12 @@ int main() {
                 }
             }
         }
+    }
+    if (Max == 3) {
+        auto p = table.begin();
+        ans.push_back(make_pair(p->first.first + 1, p->first.second));
+        ans.push_back(make_pair(p->first.first, p->first.second + 1));
+        ans.push_back(make_pair(p->first.first + 1, p->first.second + 1));
     }
     cout << ans.size() << "\n";
     for (int i = 0; i < ans.size(); ++i) {
